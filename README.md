@@ -1,52 +1,44 @@
 # Data Quality Governance Toolkit
 
-Toolkit demonstrativo de qualidade e governança de dados usando Python e datasets sintéticos.
+Projeto funcional de qualidade de dados com Python e dataset sintetico.
 
-## Objetivo
+## Como executar
 
-Demonstrar práticas de validação, profiling, documentação e monitoramento de dados para projetos de BI, ciência de dados, auditoria e machine learning.
+```bash
+pip install -r requirements.txt
+python src/generate_demo_dataset.py --rows 1000 --output data/demo_quality_dataset.csv
+python src/quality_checks.py --input data/demo_quality_dataset.csv --output-dir reports
+```
 
-## Problema de negócio
+## Saidas
 
-Modelos e dashboards dependem de dados confiáveis. Falhas como duplicidades, nulos, formatos inconsistentes, categorias inválidas e mudanças de distribuição podem gerar decisões incorretas.
+- `reports/summary.csv`
+- `reports/completeness.csv`
+- `reports/duplicates.csv`
+- `reports/invalid_domains.csv`
+- `reports/numeric_outliers.csv`
 
-## Stack
+## Verificacoes
 
-- Python
-- pandas e NumPy
-- Great Expectations ou validações próprias
-- pytest
-- Markdown para documentação de regras
+- valores ausentes por coluna
+- linhas duplicadas
+- categorias fora do dominio esperado
+- outliers numericos
+- resumo geral da base
 
 ## Estrutura
 
 ```text
-src/
-  quality_checks.py
-  generate_demo_dataset.py
-notebooks/
-  data_quality_profile.ipynb
-data/
-  README.md
+src/generate_demo_dataset.py
+src/quality_checks.py
+data/demo_quality_dataset.csv
 reports/
-  quality_report.md
-tests/
 ```
 
-## Checks demonstrados
+## Dados
 
-- Percentual de valores nulos
-- Linhas duplicadas
-- Validação de schema
-- Domínio de categorias
-- Outliers simples
-- Consistência entre colunas
-- Relatório de qualidade em Markdown
+Todos os registros sao ficticios.
 
-## Cargos-alvo
+## Licenca
 
-Analista de Dados, BI Analyst, Data Scientist, Data Quality Analyst, Analista de Governança de Dados e Auditor de Dados.
-
-## Segurança
-
-Este projeto usa apenas dados sintéticos. Não inclui dados de clientes, pacientes, sistemas internos, documentos fiscais ou material institucional.
+MIT License.
